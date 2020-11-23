@@ -8,6 +8,10 @@
 import Foundation
 
 struct HomeViewModel {
+    lazy var categories = {
+        return
+    }()
+    
     func getCategories() -> [Category]{
          [
             Category(name: "Stock"),

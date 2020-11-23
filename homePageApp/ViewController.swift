@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.translatesAutoresizingMaskIntoConstraints = false
         cv.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)
         cv.dataSource = self
         cv.delegate = self
@@ -32,7 +33,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         title = "Explore"
         addSegmentControl()
         setUpCollectionView()
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
     
     private func addSegmentControl() {
@@ -42,6 +42,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     private func setUpCollectionView() {
+        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        
         view.addSubview(collectionView)
         collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8)
@@ -50,8 +52,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             .isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8)
             .isActive = true
+        collectionView.reloadData()
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
          1
@@ -61,8 +63,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         cell.backgroundColor = .red
-        cell.contentView.backgroundColor = .red
-        cell.label.text = "tt"
+        cell.contentView.backgroundColor = .blue
+        
         return cell
         
     }

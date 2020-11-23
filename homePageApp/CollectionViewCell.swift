@@ -11,6 +11,7 @@ class CollectionViewCell: UICollectionViewCell {
     lazy var label: UILabel = {
         let label = UILabel()
         label.text = "Replace me with original text"
+        label.backgroundColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -22,8 +23,8 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     func setupViews() {
-        addSubview(label)
-        label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
+        contentView.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: centerXAnchor)
             .isActive = true
         label.centerYAnchor.constraint(equalTo: centerYAnchor)
             .isActive = true
@@ -32,5 +33,4 @@ class CollectionViewCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
