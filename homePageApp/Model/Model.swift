@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct Category {
+struct Category: Codable {
     let name: String
 }
 
-struct Theme {
+struct Theme: Codable {
     let name: String
 }
 
-struct Trend {
+struct Trend: Codable {
     let name: String
     let offer: Double
 }

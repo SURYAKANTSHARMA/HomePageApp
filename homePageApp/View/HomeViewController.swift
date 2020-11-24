@@ -9,23 +9,41 @@ import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    let viewModel: HomeViewModel
     lazy var segmentControl: UISegmentedControl = {
         let items = ["Category", "Themes", "Trending"]
         let segmentControl = UISegmentedControl(items: items)
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentControl.selectedSegmentIndex = 0
         return segmentControl
+    }()
+    
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.startAnimating()
+        return activityIndicator
     }()
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)
         cv.dataSource = self
         cv.delegate = self
-        cv.backgroundColor = .red
+        cv.backgroundColor = .white
         return cv
     }()
+    
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +51,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         title = "Explore"
         addSegmentControl()
         setUpCollectionView()
+        fetchCategory()
+    }
+    
+    private func fetchCategory() {
+        view.addSubview(activityIndicator)
+        activityIndicator.center = view.center
+        viewModel.fetchCategory { _ in
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     private func addSegmentControl() {
@@ -52,21 +82,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             .isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8)
             .isActive = true
-        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         1
+        viewModel.categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
-        cell.backgroundColor = .red
-        cell.contentView.backgroundColor = .blue
-        
+        cell.button.setTitle(viewModel.categories[indexPath.row].name, for: .normal) 
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
