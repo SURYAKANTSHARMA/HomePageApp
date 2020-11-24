@@ -12,6 +12,7 @@ class HomeViewModel {
     let themeService: NetworkInterface
     var categories: [Category] = []
     var themes: [Theme] = []
+    var selectedIndex = 0
     
     init(categoryService: NetworkInterface, themeService: NetworkInterface) {
         self.categoryService = categoryService

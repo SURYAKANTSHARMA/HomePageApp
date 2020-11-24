@@ -8,13 +8,17 @@
 import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    weak var coordinator: Coordinator?
     
     let viewModel: HomeViewModel
+    var selectedIndex: Int = 0
+    
     lazy var segmentControl: UISegmentedControl = {
         let items = ["Category", "Themes", "Trending"]
         let segmentControl = UISegmentedControl(items: items)
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
         segmentControl.selectedSegmentIndex = 0
+        segmentControl.addTarget(self, action: #selector(segmentControlDidChanged(_:)), for: .valueChanged)
         return segmentControl
     }()
     
@@ -63,6 +67,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    @objc private func segmentControlDidChanged(_ segment: UISegmentedControl) {
+        self.selectedIndex = segment.selectedSegmentIndex
+       
     }
     
     private func addSegmentControl() {

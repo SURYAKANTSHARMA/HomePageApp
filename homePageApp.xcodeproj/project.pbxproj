@@ -20,6 +20,8 @@
 		855D51B9256AA1A0008E5D8B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D51B8256AA1A0008E5D8B /* HomeViewModel.swift */; };
 		855D51BE256AA270008E5D8B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D51BD256AA270008E5D8B /* Model.swift */; };
 		855D51C3256AB1D3008E5D8B /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855D51C2256AB1D3008E5D8B /* CollectionViewCell.swift */; };
+		85E501AD256D7693004DB802 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E501AC256D7693004DB802 /* CoordinatorProtocol.swift */; };
+		85E501B2256D7A39004DB802 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E501B1256D7A39004DB802 /* MainCoordinator.swift */; };
 		85F32AEC256BA490008B410C /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F32AEB256BA490008B410C /* CategoryService.swift */; };
 		85F32AF1256BA4F2008B410C /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F32AF0256BA4F2008B410C /* NetworkingProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -61,6 +63,8 @@
 		855D51B8256AA1A0008E5D8B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		855D51BD256AA270008E5D8B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		855D51C2256AB1D3008E5D8B /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		85E501AC256D7693004DB802 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		85E501B1256D7A39004DB802 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		85F32AEB256BA490008B410C /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		85F32AF0256BA4F2008B410C /* NetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +117,7 @@
 		855D5170256A76A7008E5D8B /* homePageApp */ = {
 			isa = PBXGroup;
 			children = (
+				85E501AB256D7655004DB802 /* Coordinators */,
 				85F32AEA256BA44C008B410C /* View */,
 				85F32AE9256BA443008B410C /* Networking */,
 				85F32AE8256BA432008B410C /* ViewModel */,
@@ -143,6 +148,15 @@
 				855D5195256A76AB008E5D8B /* Info.plist */,
 			);
 			path = homePageAppUITests;
+			sourceTree = "<group>";
+		};
+		85E501AB256D7655004DB802 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				85E501AC256D7693004DB802 /* CoordinatorProtocol.swift */,
+				85E501B1256D7A39004DB802 /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		85F32AE7256BA42A008B410C /* Model */ = {
@@ -312,6 +326,7 @@
 			files = (
 				855D51BE256AA270008E5D8B /* Model.swift in Sources */,
 				855D51B4256A8C61008E5D8B /* Extension.swift in Sources */,
+				85E501AD256D7693004DB802 /* CoordinatorProtocol.swift in Sources */,
 				855D51C3256AB1D3008E5D8B /* CollectionViewCell.swift in Sources */,
 				8547693E256C2E0B003D4FE2 /* ThemeService.swift in Sources */,
 				85F32AF1256BA4F2008B410C /* NetworkingProtocol.swift in Sources */,
@@ -319,6 +334,7 @@
 				855D51B9256AA1A0008E5D8B /* HomeViewModel.swift in Sources */,
 				855D5176256A76A7008E5D8B /* HomeViewController.swift in Sources */,
 				855D5172256A76A7008E5D8B /* AppDelegate.swift in Sources */,
+				85E501B2256D7A39004DB802 /* MainCoordinator.swift in Sources */,
 				855D51AB256A85EA008E5D8B /* MenuBar.swift in Sources */,
 				855D5174256A76A7008E5D8B /* SceneDelegate.swift in Sources */,
 			);
