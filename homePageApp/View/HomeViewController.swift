@@ -61,7 +61,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     private func fetchCategory() {
         view.addSubview(activityIndicator)
         activityIndicator.center = view.center
-        viewModel.fetchCategory { _ in
+        viewModel.fetchData { _ in
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
                 self.collectionView.reloadData()
@@ -71,7 +71,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @objc private func segmentControlDidChanged(_ segment: UISegmentedControl) {
         self.selectedIndex = segment.selectedSegmentIndex
-       
+        viewModel.fetchData(type: MenuItemType(rawValue: segment.selectedSegmentIndex)!) { _ in
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     private func addSegmentControl() {
@@ -94,13 +98,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.categories.count
+        viewModel.array.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
-        cell.button.setTitle(viewModel.categories[indexPath.row].name, for: .normal) 
+        cell.button.setTitle(viewModel.array[indexPath.row].name, for: .normal)
         return cell
     }
     

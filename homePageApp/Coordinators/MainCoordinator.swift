@@ -13,7 +13,7 @@ class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     func start() {
-        let viewModel = HomeViewModel(categoryService: CategoryService(), themeService: ThemeService())
+        let viewModel = HomeViewModel(categoryService: CategoryService(), themeService: ThemeService(), trendService: TrendService())
         let homeVC = HomeViewController(viewModel: viewModel)
         homeVC.coordinator = self
         navigationController.pushViewController(homeVC, animated: true)

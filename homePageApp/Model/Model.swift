@@ -7,15 +7,18 @@
 
 import Foundation
 
-struct Category: Codable {
+protocol Nameable {
+    var name: String {get}
+}
+struct Category: Codable, Nameable {
     let name: String
 }
 
-struct Theme: Codable {
+struct Theme: Codable, Nameable {
     let name: String
 }
 
-struct Trend: Codable {
+struct Trend: Codable, Nameable {
     let name: String
     let offer: Double
 }

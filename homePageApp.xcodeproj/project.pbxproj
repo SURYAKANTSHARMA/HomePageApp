@@ -24,6 +24,7 @@
 		85E501B2256D7A39004DB802 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E501B1256D7A39004DB802 /* MainCoordinator.swift */; };
 		85F32AEC256BA490008B410C /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F32AEB256BA490008B410C /* CategoryService.swift */; };
 		85F32AF1256BA4F2008B410C /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F32AF0256BA4F2008B410C /* NetworkingProtocol.swift */; };
+		85FCFF63256EC7E40015420C /* TrendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCFF62256EC7E40015420C /* TrendService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		85E501B1256D7A39004DB802 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		85F32AEB256BA490008B410C /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		85F32AF0256BA4F2008B410C /* NetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
+		85FCFF62256EC7E40015420C /* TrendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				85F32AEB256BA490008B410C /* CategoryService.swift */,
 				85F32AF0256BA4F2008B410C /* NetworkingProtocol.swift */,
 				8547693D256C2E0B003D4FE2 /* ThemeService.swift */,
+				85FCFF62256EC7E40015420C /* TrendService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				855D51BE256AA270008E5D8B /* Model.swift in Sources */,
+				85FCFF63256EC7E40015420C /* TrendService.swift in Sources */,
 				855D51B4256A8C61008E5D8B /* Extension.swift in Sources */,
 				85E501AD256D7693004DB802 /* CoordinatorProtocol.swift in Sources */,
 				855D51C3256AB1D3008E5D8B /* CollectionViewCell.swift in Sources */,
