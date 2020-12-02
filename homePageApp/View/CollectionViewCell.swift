@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
+class CollectionViewCell: UICollectionViewCell, CellProtocol {
     
     lazy var button: UIButton = {
         let button = UIButton()

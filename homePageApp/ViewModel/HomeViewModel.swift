@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import CoreGraphics
 
-enum MenuItemType: Int {
+enum MenuItemType: Int, CaseIterable {
     case category
     case theme
     case trending
@@ -73,4 +74,31 @@ class HomeViewModel {
         }
     }
 
+}
+
+// MARK :- HomeViewModel Extensions
+internal extension HomeViewModel {
+    func getSize(viewWidth: CGFloat) -> CGSize {
+        let menuType = MenuItemType(rawValue: selectedIndex)!
+        switch menuType {
+        case .category:
+            return CGSize(width: viewWidth, height: 100)
+        case .theme:
+            return CGSize(width: viewWidth/2-20, height: 200)
+        case .trending:
+            return CGSize(width: viewWidth, height: 100)
+        }
+    }
+    
+    func cellIdentifier() -> String {
+        let menuType = MenuItemType(rawValue: selectedIndex)!
+        switch menuType {
+        case .category:
+            return String(describing: CollectionViewCell.self)
+        case .theme:
+            return String(describing: ThemeCell.self)
+        case .trending:
+            return String(describing: ThemeCell.self)
+        }
+    }
 }

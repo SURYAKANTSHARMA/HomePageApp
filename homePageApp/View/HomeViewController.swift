@@ -11,7 +11,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     weak var coordinator: Coordinator?
     
     let viewModel: HomeViewModel
-    var selectedIndex: Int = 0
     
     lazy var segmentControl: UISegmentedControl = {
         let items = ["Category", "Themes", "Trending"]
@@ -32,11 +31,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 10
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.dataSource = self
         cv.delegate = self
         cv.backgroundColor = .white
+        //cv.backgroundColor = .green
         return cv
     }()
     
@@ -70,7 +74,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @objc private func segmentControlDidChanged(_ segment: UISegmentedControl) {
-        self.selectedIndex = segment.selectedSegmentIndex
+        self.viewModel.selectedIndex = segment.selectedSegmentIndex
         viewModel.fetchData(type: MenuItemType(rawValue: segment.selectedSegmentIndex)!) { _ in
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -85,15 +89,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     private func setUpCollectionView() {
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: String(describing: CollectionViewCell.self))
+        collectionView.register(ThemeCell.self, forCellWithReuseIdentifier: String(describing: ThemeCell.self))
         
         view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8)
+        collectionView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 8).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
             .isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 8)
+        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
             .isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8)
+        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
             .isActive = true
     }
     
@@ -103,14 +108,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
-        cell.button.setTitle(viewModel.array[indexPath.row].name, for: .normal)
-        return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel.cellIdentifier(), for: indexPath) as! CellProtocol
+        if let cell = cell as? CollectionViewCell {
+            cell.button.setTitle(viewModel.array[indexPath.row].name, for: .normal)
+        } else if let cell = cell as? ThemeCell {
+          // do some customization
+            cell.titleLabel.text = viewModel.array[indexPath.row].name
+        }
+        return cell as! UICollectionViewCell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 100)
+         viewModel.getSize(viewWidth: view.frame.width)
     }
 }
-
-
