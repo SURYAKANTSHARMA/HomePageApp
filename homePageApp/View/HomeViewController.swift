@@ -91,6 +91,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     private func setUpCollectionView() {
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: String(describing: CollectionViewCell.self))
         collectionView.register(ThemeCell.self, forCellWithReuseIdentifier: String(describing: ThemeCell.self))
+        collectionView.register(TrendingCell.self, forCellWithReuseIdentifier: String(describing: TrendingCell.self))
         
         view.addSubview(collectionView)
         collectionView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 8).isActive = true

@@ -26,6 +26,7 @@
 		85F32AF1256BA4F2008B410C /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F32AF0256BA4F2008B410C /* NetworkingProtocol.swift */; };
 		85FCFF63256EC7E40015420C /* TrendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCFF62256EC7E40015420C /* TrendService.swift */; };
 		E09D534725779D2E0021807C /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09D534625779D2E0021807C /* ThemeCell.swift */; };
+		E09D534C2577C6590021807C /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09D534B2577C6590021807C /* TrendingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		85F32AF0256BA4F2008B410C /* NetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
 		85FCFF62256EC7E40015420C /* TrendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendService.swift; sourceTree = "<group>"; };
 		E09D534625779D2E0021807C /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
+		E09D534B2577C6590021807C /* TrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				855D51AA256A85EA008E5D8B /* MenuBar.swift */,
 				855D51C2256AB1D3008E5D8B /* CollectionViewCell.swift */,
 				E09D534625779D2E0021807C /* ThemeCell.swift */,
+				E09D534B2577C6590021807C /* TrendingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				85FCFF63256EC7E40015420C /* TrendService.swift in Sources */,
 				855D51B4256A8C61008E5D8B /* Extension.swift in Sources */,
 				85E501AD256D7693004DB802 /* CoordinatorProtocol.swift in Sources */,
+				E09D534C2577C6590021807C /* TrendingCell.swift in Sources */,
 				855D51C3256AB1D3008E5D8B /* CollectionViewCell.swift in Sources */,
 				8547693E256C2E0B003D4FE2 /* ThemeService.swift in Sources */,
 				85F32AF1256BA4F2008B410C /* NetworkingProtocol.swift in Sources */,

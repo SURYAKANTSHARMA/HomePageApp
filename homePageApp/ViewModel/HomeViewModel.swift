@@ -98,7 +98,7 @@ internal extension HomeViewModel {
         case .theme:
             return String(describing: ThemeCell.self)
         case .trending:
-            return String(describing: ThemeCell.self)
+            return String(describing: TrendingCell.self)
         }
     }
 }
